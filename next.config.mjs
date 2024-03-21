@@ -10,6 +10,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "avatars.githubusercontent.com",
       },
+      {
+        protocol: "http",
+        hostname: "www.impawards.com",
+      },
     ],
   },
 };

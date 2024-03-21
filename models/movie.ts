@@ -13,7 +13,6 @@ const movieSchema = new Schema({
   director: String,
   duration: Number,
   screens: [{ type: Schema.Types.ObjectId, ref: "Screen" }],
-  tickets: [{ type: Schema.Types.ObjectId, ref: "Ticket" }],
 });
 
 const Movie = models.Movie || model("Movie", movieSchema);

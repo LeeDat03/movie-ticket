@@ -23,7 +23,7 @@ export default function RootLayout({
         <div className="app">
           <Provider>
             <Navbar />
-            <main>{children}</main>
+            <main className="w-full">{children}</main>
           </Provider>
         </div>
       </body>
