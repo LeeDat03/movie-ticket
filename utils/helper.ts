@@ -9,3 +9,17 @@ export const generateSeat = (rows: number, columns: number, price: number) => {
 
   return seats;
 };
+
+export const getUniqueDate = (dates: Date[]) => {
+  const datesUnique = new Set(
+    dates.map((d) => d.toLocaleString().split("T")[0])
+  );
+  return Array.from(datesUnique);
+};
+
+export const formatTime = (date: Date) => {
+  const hours = date.getHours();
+  const mins = date.getMinutes();
+
+  return `${hours}:${mins}`;
+};

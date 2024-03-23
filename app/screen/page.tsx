@@ -21,7 +21,6 @@ const Screen = () => {
           throw new Error("Failed to fetch screen");
         }
         const data = await res.json();
-        console.log(data);
         setScreens(data);
       } catch (err) {
         console.log(err);
@@ -51,13 +50,15 @@ const Screen = () => {
         />
         <div className="max-w-[300px] flex flex-col items-center justify-center gap-2 text-center">
           <h3 className="text-3xl font-bold">{screens[0].movie.title}</h3>
-          <div className="flex items-center gap-2 text-lg">
-            <p>Duration:</p>
-            <p>{screens[0].movie.duration} minutes</p>
-          </div>
-          <div className="flex items-center gap-2 text-lg">
-            <p>Director:</p>
-            <p>{screens[0].movie.director}</p>
+          <div>
+            <div className="flex items-center gap-2 text-base">
+              <p>Duration:</p>
+              <p>{screens[0].movie.duration} minutes</p>
+            </div>
+            <div className="flex items-center gap-2 text-base">
+              <p>Director:</p>
+              <p>{screens[0].movie.director}</p>
+            </div>
           </div>
         </div>
       </div>
