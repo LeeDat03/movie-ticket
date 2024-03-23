@@ -1,7 +1,8 @@
 "use client";
 
-import { MovieProps } from "@/utils/types";
 import { useEffect, useState } from "react";
+
+import { MovieProps } from "@/utils/types";
 import MovieCard from "./movie-card";
 
 const MovieCardList = () => {
@@ -17,7 +18,6 @@ const MovieCardList = () => {
         }
         const data = await res.json();
         setMovies(data);
-        console.log(data);
       } catch {
         console.log("Failed to fetch movies");
       }

@@ -19,6 +19,13 @@ import { movieFormSchema } from "@/utils/movie-form";
 const CreateMovieForm = () => {
   const form = useForm<z.infer<typeof movieFormSchema>>({
     resolver: zodResolver(movieFormSchema),
+    defaultValues: {
+      title: "",
+      description: "",
+      poster: "",
+      director: "",
+      duration: 0,
+    },
   });
 
   const onSubmit = async (data: z.infer<typeof movieFormSchema>) => {

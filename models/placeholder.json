@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "65fc0c17f859622e815f3e2d",
+    "title": "Elemental",
+    "description": "Follows Ember and Wade, in a city where fire-, water-, earth- and air-residents live together.",
+    "poster": "http://www.impawards.com/2023/posters/elemental_ver10.jpg",
+    "director": "Peter Sohn",
+    "duration": 101,
+    "__v": 0
+  },
+  {
+    "_id": "65fc4f6df859622e815f3e30",
+    "title": "Guardians of the Galaxy Vol. 3",
+    "description": "Still reeling from the loss of Gamora, Peter Quill rallies his team to defend the universe and one of their own - a mission that could mean the end of the Guardians if not successful.",
+    "poster": "http://www.impawards.com/2023/posters/guardians_of_the_galaxy_vol_three_ver2.jpg",
+    "director": "James Gunn",
+    "duration": 150,
+    "__v": 0
+  },
+  {
+    "_id": "65fc4ffcf859622e815f3e33",
+    "title": "Kung Fu Panda 4",
+    "description": "After Po is tapped to become the Spiritual Leader of the Valley of Peace, he needs to find and train a new Dragon Warrior, while a wicked sorceress plans to re-summon all the master villains whom Po has vanquished to the spirit realm.",
+    "poster": "http://www.impawards.com/2024/posters/kung_fu_panda_four.jpg",
+    "director": "Mike Mitchell - Stephanie Stine",
+    "duration": 94,
+    "__v": 0
+  },
+  {
+    "_id": "65fc58876a69152c8ac5deba",
+    "title": "Dune: Part Two",
+    "description": "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
+    "poster": "http://www.impawards.com/2024/posters/dune_part_two_ver14.jpg",
+    "director": " Denis Villeneuve",
+    "duration": 166,
+    "__v": 0
+  }
+]

@@ -12,7 +12,6 @@ const movieSchema = new Schema({
   poster: String,
   director: String,
   duration: Number,
-  screens: [{ type: Schema.Types.ObjectId, ref: "Screen" }],
 });
 
 const Movie = models.Movie || model("Movie", movieSchema);
