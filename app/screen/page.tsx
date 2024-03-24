@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { ScreenProps } from "@/utils/types";
 import Image from "next/image";
 import ScreenSelect from "@/components/screen-select";
+import CreateScreen from "@/components/create-screen";
 
 const Screen = () => {
   const [screens, setScreens] = useState<ScreenProps[]>([]);
@@ -16,7 +17,7 @@ const Screen = () => {
   useEffect(() => {
     const fetchScreenByMovieId = async () => {
       try {
-        const res = await fetch(`/api/screen?movieId=${movieId}`);
+        const res = await fetch(`/api/screen/movie/${movieId}`);
         if (!res.ok) {
           throw new Error("Failed to fetch screen");
         }
@@ -33,6 +34,8 @@ const Screen = () => {
   if (!movieId || !screens.length) {
     return <div className="text-xl">Sorry this movie is not being show!</div>;
   }
+
+  // return <CreateScreen />;
 
   return (
     <div className="mt-10 flex gap-10">

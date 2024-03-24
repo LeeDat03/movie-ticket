@@ -25,7 +25,7 @@ const ScreenSelect: React.FC<ScreenSelectProps> = ({ screens }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/seat?screenId=${selectedScreen}&time=${showTime}`);
+    router.push(`/seat?screenId=${screenRef.current._id}&time=${showTime}`);
   };
 
   return (

@@ -3,13 +3,16 @@ import { NextRequest, NextResponse } from "next/server";
 
 import Screen from "@/models/screen";
 
-export const GET = async (req: NextRequest) => {
+export const GET = async (
+  req: NextRequest,
+  { params }: { params: { movieId: string } }
+) => {
   try {
-    const screenId = req.nextUrl.searchParams.get("screenId");
     await connectToDB();
 
-    const screen = await Screen.find({ _id: screenId }).populate("movie");
-
+    const screen = await Screen.find({ movie: params.movieId }).populate(
+      "movie"
+    );
     if (!screen) {
       return new NextResponse("Screen not found", { status: 404 });
     }

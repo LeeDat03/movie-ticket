@@ -13,11 +13,11 @@ const CreateScreen = () => {
       method: "POST",
       body: JSON.stringify({
         movie: movieId,
-        name: "Screen 2",
+        name: "Screen 3",
         timeStarts: [
-          new Date("2024-04-01T09:30:00"),
-          new Date("2024-04-01T12:30:00"),
-          new Date("2024-04-01T15:30:00"),
+          new Date("2024-04-01T07:00:00"),
+          new Date("2024-04-01T10:00:00"),
+          new Date("2024-04-01T13:00:00"),
         ],
         seats: generateSeat(6, 15, 50_000),
       }),

@@ -19,7 +19,19 @@ export const getUniqueDate = (dates: Date[]) => {
 
 export const formatTime = (date: Date) => {
   const hours = date.getHours();
-  const mins = date.getMinutes();
+  const mins =
+    date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
 
   return `${hours}:${mins}`;
+};
+
+export const calcPrice = (numberOfSeat: number, price: number) => {
+  return numberOfSeat * price;
+};
+
+export const formatMoney = (money: number) => {
+  return money.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
 };
