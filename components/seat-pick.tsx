@@ -62,8 +62,10 @@ const SeatPick = ({ screen }: SeatPickProps) => {
 
       {selectedSeat.length > 0 && (
         <div className="mx-auto w-4/5 mt-20 border-t-2 border-gray-300">
+          {/* TODO: custom price */}
           <PreviewSeat
             selectedSeat={selectedSeat}
+            totalPrice={calcPrice(selectedSeat.length, screen.seats[0].price)}
             setSelectedSeat={setSelectedSeat}
           />
         </div>

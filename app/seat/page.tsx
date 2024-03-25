@@ -11,7 +11,6 @@ const Seat = () => {
 
   const searchParams = useSearchParams();
   const screenId = searchParams.get("screenId");
-  const timeStartIndex = searchParams.get("time");
 
   useEffect(() => {
     const fetchScreenById = async () => {
