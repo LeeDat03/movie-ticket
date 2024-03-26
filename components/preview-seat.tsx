@@ -51,8 +51,9 @@ const PreviewSeat = ({
       const ticketRes = await fetch("/api/ticket/new", {
         method: "POST",
         body: JSON.stringify({
-          user: (session as SessionUserDefault)?.user?.id,
+          user: (session as SessionUserDefault).user.id,
           movie: data.movie._id,
+          seats: selectedSeat,
           screen: screenId,
         }),
       });
