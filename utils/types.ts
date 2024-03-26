@@ -1,3 +1,13 @@
+export interface SessionUserDefault {
+  user: {
+    id?: string;
+    name: string;
+    email: string;
+    image: string;
+    role?: "USER" | "ADMIN";
+  };
+}
+
 export interface MovieProps {
   _id?: string;
   title: string;

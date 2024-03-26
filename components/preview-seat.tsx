@@ -1,10 +1,14 @@
 "use client";
 
 import React from "react";
-import { Button } from "./ui/button";
-import { formatMoney, formatSeat } from "@/utils/helper";
-import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useSession } from "next-auth/react";
+
+import { Button } from "./ui/button";
+import { useToast } from "./ui/use-toast";
+import { formatMoney, formatSeat } from "@/utils/helper";
+import { SessionUserDefault } from "@/utils/types";
 
 interface PreviewSeatProps {
   selectedSeat: string[];
@@ -17,12 +21,14 @@ const PreviewSeat = ({
   totalPrice,
   setSelectedSeat,
 }: PreviewSeatProps) => {
-  const searchParams = useSearchParams();
-  const router = useRouter();
+  const { toast } = useToast();
 
+  const searchParams = useSearchParams();
   const screenId = searchParams.get("screenId");
 
-  const timeIndex = searchParams.get("time");
+  const router = useRouter();
+
+  const { data: session } = useSession();
 
   const handleConfirm = async () => {
     // TODO: create ticket, make seat unavailable
@@ -41,6 +47,32 @@ const PreviewSeat = ({
       if (!res.ok) throw new Error("Failed to submit");
 
       const data = await res.json();
+
+      const ticketRes = await fetch("/api/ticket/new", {
+        method: "POST",
+        body: JSON.stringify({
+          user: (session as SessionUserDefault)?.user?.id,
+          movie: data.movie._id,
+          screen: screenId,
+        }),
+      });
+
+      if (!ticketRes.ok) {
+        toast({
+          variant: "destructive",
+          title: "Uh oh, something went wrong!",
+          description: "Failed to create ticket, please try again.",
+        });
+      }
+
+      const ticketData = await ticketRes.json();
+      console.log(ticketData);
+
+      toast({
+        variant: "success",
+        title: "Success",
+        description: "Ticket has been created successfully.",
+      });
       router.push("/");
     } catch (err) {
       console.log("Failed to submit", err);

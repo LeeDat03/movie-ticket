@@ -7,6 +7,7 @@ import { ScreenProps } from "@/utils/types";
 import { formatTime, getUniqueDate } from "@/utils/helper";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 interface ScreenSelectProps {
   screens: ScreenProps[];
@@ -15,6 +16,8 @@ interface ScreenSelectProps {
 const ScreenSelect: React.FC<ScreenSelectProps> = ({ screens }) => {
   const [selectedScreen, setSelectedScreen] = useState(0);
   const [showTime, setShowTime] = useState(0);
+
+  const { data: session } = useSession();
 
   const router = useRouter();
   const screenRef = useRef(screens[selectedScreen]);
@@ -25,6 +28,10 @@ const ScreenSelect: React.FC<ScreenSelectProps> = ({ screens }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // TODO:
+    if (!session) return router.push("/api/auth/signin");
+
     router.push(`/seat?screenId=${screenRef.current._id}&time=${showTime}`);
   };
 
