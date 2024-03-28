@@ -28,3 +28,12 @@ export interface ScreenProps {
     price: number;
   }[];
 }
+
+export interface TicketProps {
+  _id: string;
+  user: SessionUserDefault["user"];
+  movie: MovieProps;
+  screen: ScreenProps;
+  seats: string[];
+  bookingDate: Date;
+}

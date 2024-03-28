@@ -18,11 +18,11 @@ export const getUniqueDate = (dates: Date[]) => {
 };
 
 export const formatTime = (date: Date) => {
-  const hours = date.getHours();
+  const hours = date.getHours() < 10 ? `0${date.getHours()}` : date.getHours();
   const mins =
     date.getMinutes() < 10 ? `0${date.getMinutes()}` : date.getMinutes();
 
-  return `${hours}:${mins}`;
+  return `${hours} : ${mins}`;
 };
 
 export const calcPrice = (numberOfSeat: number, price: number) => {

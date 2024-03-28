@@ -29,7 +29,7 @@ const UserDropDown = ({ session }: UserDropDownProps) => {
     <div className="flex justify-center items-center gap-6">
       <div className="hidden md:flex justify-center items-center gap-6">
         <Button size="md" asChild>
-          <Link href="/create-post">My Ticket</Link>
+          <Link href="/my-ticket">My Ticket</Link>
         </Button>
         <Button size="md" variant="destructive" onClick={handlerSignout}>
           Sign out
@@ -62,7 +62,7 @@ const UserDropDown = ({ session }: UserDropDownProps) => {
 
           <DropdownMenuContent>
             <DropdownMenuItem>
-              <Link href="/create-post">My ticket</Link>
+              <Link href="/my-ticket">My ticket</Link>
             </DropdownMenuItem>
 
             <DropdownMenuSeparator />
