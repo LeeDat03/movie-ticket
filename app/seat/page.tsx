@@ -1,5 +1,6 @@
 "use client";
 
+import LoadingWave from "@/components/loading/loading-wave";
 import SeatPick from "@/components/seat-pick";
 import { ScreenProps } from "@/utils/types";
 import { useSearchParams } from "next/navigation";
@@ -7,7 +8,7 @@ import React, { useEffect, useState } from "react";
 
 const Seat = () => {
   const [screen, setScreen] = useState<ScreenProps>();
-  const [isLoading, setIsLoading] = useState<boolean>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   const searchParams = useSearchParams();
   const screenId = searchParams.get("screenId");
@@ -21,17 +22,18 @@ const Seat = () => {
         }
         const data = await res.json();
         setScreen(data[0]);
+        setIsLoading(false);
       } catch (err) {
         console.log("Failed to get screen", err);
       }
     };
 
-    setIsLoading(true);
     fetchScreenById();
-    setIsLoading(false);
   }, [screenId]);
 
-  if (!screen || isLoading) return <div>Screen not be found</div>;
+  if (isLoading) return <LoadingWave />;
+
+  if (!screen) return <div>Screen not be found</div>;
 
   return (
     <div className="mt-5 mb-32">

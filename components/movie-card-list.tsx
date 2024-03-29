@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 
 import { MovieProps } from "@/utils/types";
 import MovieCard from "./movie-card";
+import LoadingWave from "./loading/loading-wave";
 
 const MovieCardList = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [movies, setMovies] = useState<MovieProps[]>([]);
 
   useEffect(() => {
@@ -18,6 +20,7 @@ const MovieCardList = () => {
         }
         const data = await res.json();
         setMovies(data);
+        setIsLoading(false);
       } catch {
         console.log("Failed to fetch movies");
       }
@@ -25,6 +28,10 @@ const MovieCardList = () => {
 
     fetchMovies();
   }, []);
+
+  if (isLoading) {
+    return <LoadingWave />;
+  }
 
   return (
     <div className="mt-10 mx-20 flex justify-center flex-wrap gap-10">

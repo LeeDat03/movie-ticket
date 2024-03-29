@@ -6,9 +6,10 @@ import { useEffect, useState } from "react";
 import { ScreenProps } from "@/utils/types";
 import Image from "next/image";
 import ScreenSelect from "@/components/screen-select";
-import CreateScreen from "@/components/create-screen";
+import LoadingWave from "@/components/loading/loading-wave";
 
 const Screen = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [screens, setScreens] = useState<ScreenProps[]>([]);
   const searchParams = useSearchParams();
   const movieId = searchParams.get("movieId");
@@ -17,12 +18,14 @@ const Screen = () => {
   useEffect(() => {
     const fetchScreenByMovieId = async () => {
       try {
+        setIsLoading(true);
         const res = await fetch(`/api/screen/movie/${movieId}`);
         if (!res.ok) {
           throw new Error("Failed to fetch screen");
         }
         const data = await res.json();
         setScreens(data);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
       }
@@ -31,11 +34,17 @@ const Screen = () => {
     fetchScreenByMovieId();
   }, [movieId]);
 
-  if (!movieId || !screens.length) {
-    return <div className="text-xl">Sorry this movie is not being show!</div>;
+  if (isLoading) {
+    return <LoadingWave />;
   }
 
-  // return <CreateScreen />;
+  if (!movieId || !screens.length) {
+    return (
+      <div className="text-xl text-center">
+        Sorry this movie is not being show!
+      </div>
+    );
+  }
 
   return (
     <div className="mt-10 flex gap-10">

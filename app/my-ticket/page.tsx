@@ -1,5 +1,6 @@
 "use client";
 
+import LoadingWave from "@/components/loading/loading-wave";
 import TicketList from "@/components/ticket-list";
 import { SessionUserDefault, TicketProps } from "@/utils/types";
 import { useSession } from "next-auth/react";
@@ -7,7 +8,7 @@ import React, { useEffect, useState } from "react";
 
 const MyTicket = () => {
   const [tickets, setTickets] = useState<TicketProps[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { data: session } = useSession();
 
   useEffect(() => {
@@ -34,6 +35,8 @@ const MyTicket = () => {
       isMounted = false;
     };
   }, [session, tickets]);
+
+  if (isLoading) return <LoadingWave />;
 
   return <TicketList tickets={tickets} />;
 };
